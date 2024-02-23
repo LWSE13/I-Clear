@@ -1,0 +1,43 @@
+:root {
+    --primary-colour: #4EDAE0;
+    --secondary-colour: #FFFF79;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 20px;
+    color: white;
+
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primary-colour);
+    padding-bottom: 5px ;
+}
+
+.dec-line {
+    padding: 2px;
+    background-color: var(--secondary-colour);
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+#search-title,
+#search-input,
+#search-button {
+    margin: 5px;
+    margin-left: 15px;
+    height: 30px;
+}
