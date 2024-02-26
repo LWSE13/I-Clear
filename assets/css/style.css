@@ -28,7 +28,8 @@ header {
     margin-bottom: 20px;
 }
 
-#search-bar {
+#search-bar,
+#recent-searches {
     display: flex;
     flex-direction: column;
     width: 15%;
@@ -36,8 +37,29 @@ header {
 
 #search-title,
 #search-input,
-#search-button {
+#search-button,
+#clear-history {
     margin: 5px;
     margin-left: 15px;
     height: 30px;
+}
+
+#clear-history {
+    width: 50%;
+    border-radius: 15px;
+}
+
+#SH-positioning {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-styling {
+    cursor: pointer;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: column;
 }
