@@ -62,4 +62,6 @@ header {
 #button-container {
     display: flex;
     flex-direction: column;
+    margin: 5px;
+    margin-left: 15px;
 }
