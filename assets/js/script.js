@@ -6,6 +6,24 @@ var recentSearchContainerEl = document.getElementById("button-container");
 const apiBase = "https://api.openweathermap.org";
 const apiKey = "f23ee9deb4e1a7450f3157c44ed020e1";
 
+
+function loadSearchHistory () {
+    var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    for (let i=0; i<searchHistory.length; i++) {
+        //create button
+        var recentSearchButtonEl = document.createElement("button");
+        //add search history text
+        recentSearchButtonEl.textContent = searchHistory[i];
+        // class list add
+        recentSearchButtonEl.classList.add("button-styling");
+        //add event listener that calls the searchForWeather function with the parameters of the search history index of the array and duplicate button check false
+        recentSearchButtonEl.addEventListener("click", function() {
+            searchForWeather(searchHistory[i], false)
+        });
+        recentSearchContainerEl.appendChild(recentSearchButtonEl)
+    }
+}
+loadSearchHistory();
 // Function to search for weather. added location and recentButtonCheck as parameters to prevent button duplication
 function searchForWeather(location, recentButtonCheck) {
     
@@ -57,8 +75,7 @@ searchBtnEl.addEventListener("click", function() {
 // Event listener for history button
 historyButtonEl.addEventListener("click", function() {
     localStorage.clear();
+    recentSearchContainerEl.innerHTML = "";
 })
-
-// Load recent searches from local storage
 
 // Display API data on page
