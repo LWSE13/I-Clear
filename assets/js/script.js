@@ -29,6 +29,7 @@ function loadSearchHistory () {
     }
 }
 loadSearchHistory();
+
 // Function to search for weather. added location and recentButtonCheck as parameters to prevent button duplication
 function searchForWeather(location, recentButtonCheck) {
     // Check if location is empty and prompts user to enter a search term
@@ -37,12 +38,11 @@ function searchForWeather(location, recentButtonCheck) {
         return;
     }
     forecastContainer.innerHTML = "";
-    // Fetch request to Openweather API. Used backticks to insert my api info and location variable (when it is defined by the user input line 55)
+    // Fetch request to Openweather API. Used backticks to insert my api info and location variable (when it is defined by the user input line 116)
     var weatherRequest = `${apiBase}/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
     fetch(weatherRequest)
         .then(function(response) {
             if (!response.ok) {
-                console.log("Error: Location not found");
                 alert("Error: Location not found");
                 return;
             }
@@ -50,15 +50,20 @@ function searchForWeather(location, recentButtonCheck) {
         })
         .then(function(data) {
             if (data) {
-                console.log(data);
-                // TODO: update HTML with weather data
+
+                //navigated through the data within my console to find the city name, date, temperature, humidity, wind speed and weather icon
                 var cityName = data.city.name;
+                //in order to get the current date I had to navigate to the first line in the list array and split the dt_txt (date and time text) at the point 
+                //where there was a space and then selected the first index of the split array being the date 
+                //same process was used to get the time to filter the data for my 5 day forecast on line 70-72
                 var currentDate = data.list[0].dt_txt.split(" ")[0];
 
                 var mainTemp = data.list[0].main.temp;
                 var mainHumidity = data.list[0].main.humidity;
                 var mainWind = data.list[0].wind.speed;
-
+                //to get the weather icon I had to navigate to the first line in the list array and then the weather array and then the icon property
+                //from there I used backticks and included the weather icon code in the openweather url. I can use this to obtain the appropriate weather icon
+                //for each forecast
                 var weatherIconCode = data.list[0].weather[0].icon;
                 var weatherIconUrl = `http://openweathermap.org/img/w/${weatherIconCode}.png`;
 
@@ -67,10 +72,10 @@ function searchForWeather(location, recentButtonCheck) {
                     var time = dataPosition.dt_txt.split(" ")[1];
                     return time === "12:00:00";
                 });
-                console.log(dataPerDay);
-                dataPerDay.forEach(function(dataPosition) {
+                dataPerDay.forEach(function(dataPosition, index) {
                     // Created a new div for the iterated day's weather data
                     var dayDiv = document.createElement("div");
+                    dayDiv.classList.add("day-div");
 
                     // Created HTML elements for each piece of data
                     var dateEl = document.createElement("p");
@@ -95,6 +100,10 @@ function searchForWeather(location, recentButtonCheck) {
 
                     // Appended the day div to the forecast container
                     forecastContainer.appendChild(dayDiv);
+                    
+                    setTimeout(function() {
+                        dayDiv.classList.add('visible');
+                    }, index * 200);
                 });
 
                 cityHeadingEl.textContent = cityName;

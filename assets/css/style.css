@@ -196,3 +196,20 @@ display: flex;
     justify-content: space-between;
 }
 
+#daily-forecast {
+    margin: 10px
+}
+
+.day-div {
+    /* existing styles */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: azure;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.day-div.visible {
+    opacity: 1;
+    
+}
