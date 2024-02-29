@@ -8,6 +8,7 @@ var mainTempEl = document.getElementById("main-temp");
 var mainHumidityEl = document.getElementById("main-humidity");
 var mainWindEl = document.getElementById("main-wind");
 var forecastContainer = document.getElementById("bottom-container");
+var topContainer = document.getElementById("top-container");
 const apiBase = "https://api.openweathermap.org";
 const apiKey = "f23ee9deb4e1a7450f3157c44ed020e1";
 
@@ -86,9 +87,9 @@ function searchForWeather(location, recentButtonCheck) {
 
                     // Set the text content of each element
                     dateEl.textContent = "Date: " + dataPosition.dt_txt.split(" ")[0];
-                    tempEl.textContent = "Temperature: " + dataPosition.main.temp;
-                    humidityEl.textContent = "Humidity: " + dataPosition.main.humidity;
-                    windEl.textContent = "Wind Speed: " + dataPosition.wind.speed;
+                    tempEl.textContent = "Temperature: " + dataPosition.main.temp +  " °C";
+                    humidityEl.textContent = "Humidity: " + dataPosition.main.humidity + "%";
+                    windEl.textContent = "Wind Speed: " + dataPosition.wind.speed + " m/s";
                     iconEl.src = `http://openweathermap.org/img/w/${dataPosition.weather[0].icon}.png`;
 
                     // Appended each element to the day div
@@ -98,11 +99,28 @@ function searchForWeather(location, recentButtonCheck) {
                     dayDiv.appendChild(humidityEl);
                     dayDiv.appendChild(windEl);
 
+                    var icon = dataPosition.weather[0].icon;
+                    if (icon.startsWith("01")) {  // Clear sky
+                        dayDiv.style.backgroundColor = "#F0D511"; 
+                    } else if (icon.startsWith("02") || icon.startsWith("03") || icon.startsWith("04")) {  // Clouds
+                        dayDiv.style.backgroundColor = "#A7A7A8";  
+                        dayDiv.style.color = "black";  
+                    } else if (icon.startsWith("09") || icon.startsWith("10")) {  // Rain
+                        dayDiv.style.backgroundColor = "#00BFFF";  
+                    } else if (icon.startsWith("11")) {  // Thunderstorm
+                        dayDiv.style.backgroundColor = "#000080";  
+                    } else if (icon.startsWith("13")) {  // Snow
+                        dayDiv.style.backgroundColor = "azure";
+                        dayDiv.style.color = "black";  
+                    } else if (icon.startsWith("50")) {  // Mist
+                        dayDiv.style.backgroundColor = "#808080";  
+                    }
+
                     // Appended the day div to the forecast container
                     forecastContainer.appendChild(dayDiv);
                     
                     setTimeout(function() {
-                        dayDiv.classList.add('visible');
+                        dayDiv.classList.add("visible");
                     }, index * 200);
                 });
 
@@ -116,6 +134,24 @@ function searchForWeather(location, recentButtonCheck) {
                 var weatherIconEl = document.createElement("img");
                 weatherIconEl.src = weatherIconUrl;
                 cityHeadingEl.appendChild(weatherIconEl);
+                
+                
+                var icon = data.list[0].weather[0].icon;
+                if (icon.startsWith("01")) {  // Clear sky
+                    topContainer.style.backgroundColor = "#F0D511"; 
+                } else if (icon.startsWith("02") || icon.startsWith("03") || icon.startsWith("04")) {  // Clouds
+                    topContainer.style.backgroundColor = "#A7A7A8";  
+                    topContainer.style.color = "black";  
+                } else if (icon.startsWith("09") || icon.startsWith("10")) {  // Rain
+                    topContainer.style.backgroundColor = "#00BFFF";  
+                } else if (icon.startsWith("11")) {  // Thunderstorm
+                    topContainer.style.backgroundColor = "#000080";  
+                } else if (icon.startsWith("13")) {  // Snow
+                    topContainer.style.backgroundColor = "azure";
+                    topContainer.style.color = "black";  
+                } else if (icon.startsWith("50")) {  // Mist
+                    topContainer.style.backgroundColor = "#808080";  
+                }
 
                 if (recentButtonCheck) {
                     var recentSearchButtonEl = document.createElement("button");
