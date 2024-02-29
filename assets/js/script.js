@@ -183,3 +183,7 @@ historyButtonEl.addEventListener("click", function() {
 })
 
 // Display API data on page
+
+
+
+
