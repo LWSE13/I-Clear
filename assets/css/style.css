@@ -1,5 +1,5 @@
 :root {
-    --primary-colour: #4EDAE0;
+    --primary-colour: #007BFF;
     --secondary-colour: #FFFF79;
 }
 
@@ -7,7 +7,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
 }
+
 
 h1 {
     margin: 20px;
@@ -28,11 +30,20 @@ header {
     margin-bottom: 20px;
 }
 
+.dec-line2 {
+    padding: 1px;
+    background-color: rgb(194, 194, 194);
+    border-radius: 20px;
+    width: 80%;
+    margin: 5px auto 5px 28px;
+
+}
+
 #search-bar,
 #recent-searches {
     display: flex;
     flex-direction: column;
-    width: 15%;
+
 }
 
 #search-title,
@@ -41,12 +52,24 @@ header {
 #clear-history {
     margin: 5px;
     margin-left: 15px;
-    height: 30px;
+    height: 40px;
 }
 
 #clear-history {
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 15px;
+    width: 75%;
+    background-color: #e3dede;
+    outline: rgb(84, 82, 82) solid 3px;
+    color: rgb(0, 0, 0);
+}
+
+#clear-history:hover {
+    color: rgb(236, 91, 91);
+    transition: 0.15s;
 }
 
 #SH-positioning {
@@ -57,6 +80,19 @@ header {
 
 .button-styling {
     cursor: pointer;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 20px; 
+    background-color: #007BFF; 
+    color: white; 
+    font-size: 14px; 
+    font-weight: bold; 
+}
+
+.button-styling:hover {
+    background-color: #0056b3;
+    transition: 0.15s;
 }
 
 #button-container {
@@ -64,4 +100,57 @@ header {
     flex-direction: column;
     margin: 5px;
     margin-left: 15px;
+}
+
+
+#main-container {
+display: flex;
+}
+
+#weather-container {
+    margin-left: auto;
+    background-color: lightgray;
+    width: 80%;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    height: 30vh;
+}
+
+#city-heading {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#search-input {
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+#date {
+    font-style: italic;
+}
+
+#weatherTop-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+#city-heading {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+#weather-sub-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-subH {
+    margin-top: 30px;
 }

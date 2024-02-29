@@ -2,6 +2,11 @@ var searchBtnEl = document.getElementById("search-button");
 var searchInputEl = document.getElementById("search-input");
 var historyButtonEl = document.getElementById("clear-history");
 var recentSearchContainerEl = document.getElementById("button-container");
+var cityHeadingEl = document.getElementById("city-heading");
+var dateEl = document.getElementById("date");
+var mainTempEl = document.getElementById("main-temp");
+var mainHumidityEl = document.getElementById("main-humidity");
+var mainWindEl = document.getElementById("main-wind");
 
 const apiBase = "https://api.openweathermap.org";
 const apiKey = "f23ee9deb4e1a7450f3157c44ed020e1";
@@ -33,8 +38,8 @@ function searchForWeather(location, recentButtonCheck) {
         return;
     }
 
-    // Fetch request to Openweather API. Used backticks to insert my api info and location variable (when it is defined by the user input)
-    var weatherRequest = `${apiBase}/data/2.5/weather?q=${location}&appid=${apiKey}`;
+    // Fetch request to Openweather API. Used backticks to insert my api info and location variable (when it is defined by the user input line 55)
+    var weatherRequest = `${apiBase}/data/2.5/forecast?q=${location}&appid=${apiKey}`;
     fetch(weatherRequest)
         .then(function(response) {
             if (!response.ok) {
@@ -48,6 +53,20 @@ function searchForWeather(location, recentButtonCheck) {
             if (data) {
                 console.log(data);
                 // TODO: update HTML with weather data
+                var cityName = data.city.name;
+                var currentDate = data.list[0].dt_txt.split(" ")[0];
+                var mainTemp = data.list[0].main.temp;
+                var mainHumidity = data.list[0].main.humidity;
+                var mainWind = data.list[0].wind.speed;
+                
+                cityHeadingEl.textContent = cityName;
+                dateEl.textContent = currentDate;
+                mainTempEl.textContent = "Temperature: " + mainTemp;
+                mainHumidityEl.textContent = "Humidity: " + mainHumidity;
+                mainWindEl.textContent = "Wind Speed: " + mainWind;
+                
+
+
 
                 if (recentButtonCheck) {
                     var recentSearchButtonEl = document.createElement("button");
