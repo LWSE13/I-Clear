@@ -119,14 +119,15 @@ header {
 display: flex;
 }
 
-#weather-container {
+.weather-container {
     margin-left: auto;
     background-color: lightgray;
-    width: 70%;
+    width: 99%;
     margin-right: 20px;
     padding: 10px;
     border-radius: 20px;
     height: 30vh;
+    margin-right: 10px;
 }
 
 #search-container {
@@ -184,3 +185,14 @@ display: flex;
     margin-top: 30px;
     margin-left: 15px;
 }
+
+#side-container {
+    width: 100%;
+}
+
+#bottom-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
