@@ -58,12 +58,18 @@ function searchForWeather(location, recentButtonCheck) {
                 var mainTemp = data.list[0].main.temp;
                 var mainHumidity = data.list[0].main.humidity;
                 var mainWind = data.list[0].wind.speed;
-                
+                var weatherIconCode = data.list[0].weather[0].icon;
+                var weatherIconUrl = `http://openweathermap.org/img/w/${weatherIconCode}.png`;
+
                 cityHeadingEl.textContent = cityName;
                 dateEl.textContent = currentDate;
                 mainTempEl.textContent = "Temperature: " + mainTemp;
                 mainHumidityEl.textContent = "Humidity: " + mainHumidity;
                 mainWindEl.textContent = "Wind Speed: " + mainWind;
+                var weatherIconEl = document.createElement('img');
+                weatherIconEl.src = weatherIconUrl;
+                cityHeadingEl.appendChild(weatherIconEl);
+
                 
 
 

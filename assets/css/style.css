@@ -34,8 +34,17 @@ header {
     padding: 1px;
     background-color: rgb(194, 194, 194);
     border-radius: 20px;
-    width: 80%;
-    margin: 5px auto 5px 28px;
+    width: 90%;
+    align-items: center;
+    margin: 10px 0 10px 12px;
+   
+
+}
+
+#dec-line-positioning {
+    display: flex;
+    justify-content: center;
+    
 
 }
 
@@ -61,7 +70,7 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    width: 75%;
+    width: 50%;
     background-color: #e3dede;
     outline: rgb(84, 82, 82) solid 3px;
     color: rgb(0, 0, 0);
@@ -88,6 +97,8 @@ header {
     color: white; 
     font-size: 14px; 
     font-weight: bold; 
+    width: 75%;
+    height: 30px;
 }
 
 .button-styling:hover {
@@ -98,6 +109,7 @@ header {
 #button-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 5px;
     margin-left: 15px;
 }
@@ -110,11 +122,27 @@ display: flex;
 #weather-container {
     margin-left: auto;
     background-color: lightgray;
-    width: 80%;
+    width: 70%;
     margin-right: 20px;
     padding: 10px;
     border-radius: 20px;
     height: 30vh;
+}
+
+#search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
+}
+
+#search-bar {
+  display: flex;
+  align-items: center;
+}
+
+#search-button {
+    width: 75%;
 }
 
 #city-heading {
@@ -130,6 +158,7 @@ display: flex;
     font-size: 16px;
     background-color: #f8f9fa;
     color: #495057;
+    width: 75%;
 }
 
 #date {
@@ -153,4 +182,5 @@ display: flex;
 
 .weather-subH {
     margin-top: 30px;
+    margin-left: 15px;
 }
